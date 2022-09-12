@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+</body>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone@7.19.0/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    let count = 0;
+    function countUP() {
+        count = count + 1;
+        console.log(count)
+        render()
+    }
+    function render() {
+        ReactDOM.render(<Container />, root)
+    }
+    function Container() {
+        return (
+            <div>
+                <h3>Total clicks : {count}</h3>
+                <button onClick={countUP}>Click me</button>
+            </div>
+        )
+    }
+    render();
+</script>
+
+</html>

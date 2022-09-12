@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+</body>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script>
+    const root = document.getElementById("root");
+    //  첫번째 인자로 태그명
+    //  두번째 인자로 프로퍼티를 둘  수 있다, id, style
+    //      property로 이벤트를 설정할 수 있다
+    //  세번째 인자로 텍스트(내용)
+    const h3 = React.createElement(
+        "h3"
+        , {
+            id: "sexy-span"
+            , onMouseEnter: () => console.log("mouse enter..")
+            //, style: { backgroundColor: 'red' }
+        }
+        , "Hello React JS"
+    );
+    const btn = React.createElement(
+        "button"
+        , {
+            onClick: () => {
+                console.log(1)
+            }
+            , style: {
+                backgroundColor: "tomato"
+            }
+        }
+        , "Click me"
+    )
+
+    const container = React.createElement("div", null, [h3, btn])
+    ReactDOM.render(container, root);
+</script>
+
+</html>

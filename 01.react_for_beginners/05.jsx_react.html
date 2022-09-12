@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+</body>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone@7.19.0/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+    function Title() {
+        return (
+            <h3
+                id="titleId"
+                onMouseEnter={() => console.log("mouse enter")}
+            >
+                Hello World
+            </h3>
+        )
+    }
+
+    const Button = () => (
+        <button
+            id="btn"
+            onClick={() => console.log("click")}
+            style={{ backgroundColor: "tomato" }}
+        > Click me
+        </button>
+    )
+    const Container = () => {
+        return (
+            <div>
+                <button>소문자는 html 태그</button>
+                <Title />
+                <Button />
+            </div>
+        )
+    }
+    ReactDOM.render(<Container />, root)
+</script>
+
+</html>
