@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+</body>
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+<script src="https://unpkg.com/@babel/standalone@7.19.0/babel.min.js"></script>
+<script type="text/babel">
+    const root = document.getElementById("root");
+
+    function Container() {
+        //const data = React.useState();
+        //console.log(data);
+        //  [undefined, f()]
+        //  0번째 배열이 data
+        //  1번째 값이 data를 변경하는 함수
+
+        //  초기값을 설정할 수 있음
+        //const data = React.useState(0)
+        //  [0, f()]
+
+        const [counter, setCounter] = React.useState(0); 
+        const onClick = () => {
+            
+            setCounter(counter+1);
+        }
+
+        return (
+            <div>
+                <h3>Total clicks : {counter}</h3>
+                <button onClick={onClick}>Click me</button>
+            </div>
+        )
+    }
+    ReactDOM.render(<Container />, root)
+</script>
+
+</html>
