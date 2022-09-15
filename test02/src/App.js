@@ -1,48 +1,59 @@
 import {useState, useEffect} from "react";
 
-//  스테이트를 변경할 때 무조건 전체적으로 랜더 된다 > useState
-//  한번만 실행할 때 > useEffect
+
+// celanup function 이란?
+//  componenet가 destory 될 때 실행됨
+function Hello(){
+
+  useEffect(()=>{
+    console.log("created Hello ")
+    //  component가 destory될 때 실행 됨
+    return () => console.log(`destroyed :(`)
+    
+  }, [] )
+
+  return(
+    <h3>Hello World !!!!</h3>
+  )
+
+}
+
+function Hi(){
+
+  function byFn(){
+    console.log("bye ")
+  }
+
+  function hiFn(){
+    console.log('hi ')
+
+    //  컴포넌트가 종료될때 함수를 실행시킴
+    return byFn;
+  }
+
+  //  useEffect의 []은 한번만 실행됨
+  useEffect(hiFn, []);
+
+  return(
+    <h3>hi</h3>
+  )
+}
+
+
 function App() {
-  const [counter, setValue] = useState(0);
-  const [keyword, setKeyword] = useState("");
+  const [showing, setShowing] = useState(false);
 
-  const onClick = () => {
-    setValue( (prev) => prev+1 )
+  const onClick = ()=>{
+    setShowing( (prev)=>{
+      //console.log(`prev : ${prev}, next : ${!prev}`)
+      return !prev;
+    } )
   }
-
-  const onChange = (event) => { 
-      setKeyword( ()=>{
-        console.log(`prev : ${keyword}, next : ${event.target.value}`);
-      return event.target.value;
-    }) 
-  }
-
-  console.log(`i run all the time`);
-
-  //  한번만 실행 할 때
-  //  첫번째 인자로 함수, 두번째 인자로 빈배열
-  useEffect(()=>{
-    console.log("i run only once.")
-  }, [])
-
-  //  원하는 값의 상태가 변할 때마다 실행
-  //  첫번째 자로 함수, 두번째 인자로 state의 값
-  //  counter값이 변한다 해도 다시 실행하지 않음, keyword가 변하면 실행이 됨
-  useEffect(()=>{
-    if(keyword !== "" && keyword.length > 5) console.log(`search for ... ${keyword}`);
-  }, [keyword])
-
-
+ 
   return (
     <div>
-      <h1>{counter}</h1>
-      <input
-        value={keyword}
-        onChange={onChange}
-        placeholder={"search for.."}
-        type="text"
-      />
-      <button onClick={onClick}>click me</button>
+        {showing ? <Hello/> : <Hi /> }
+        <button onClick={onClick}>{showing ? "hide" : "show"}</button>
     </div>
   );
 }
