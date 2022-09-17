@@ -6,15 +6,19 @@ function App() {
 
   const [coins, setCoins] = useState([]);
 
+  //  인풋 달러 금액
   const [money, setMoney] = useState(0);
 
+  //  선택한 코인 머니
   const [amount, setAmount] = useState(0); 
 
   const onChange = (event) => {
-    console.log(event.target.value)
+    //console.log(event.target.value)
+    setAmount(Number(event.target.value))
   }
 
-  const onChangeMoney = () => {}
+  const onChangeMoney = (event) => { setMoney(Number(event.target.value))}
+  
 
   useEffect( ()=>{
     console.log(`init`);
@@ -37,14 +41,16 @@ function App() {
       {loding ? <strong>Loding ...</strong> : null}
 
       <div>
-        <input type="number" value={money} onChangeMoney={onChangeMoney} />
+        <input type="number" value={money} onChange={onChangeMoney} />
       </div>
 
       <div>
-        <input type="number" readOnly  />
+        <input type="number" value={ money === 0 || money === "" ? 0 : amount === 0? 0 : money/amount} readOnly  />
       </div>
       <select onChange={onChange}>
+          <option value="0">선택</option>
         {
+            
           coins.map( (item, index)=>{
             return <option key={index} value={item.quotes.USD.price}>  {item.name} ({item.symbol}) : ${item.quotes.USD.price} USD  </option>
           } )
