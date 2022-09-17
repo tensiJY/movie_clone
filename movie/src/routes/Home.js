@@ -32,10 +32,12 @@ function Home() {
             {
               movies.map((movie, index) =>
                 <Movie
+                  key={movie.id}
                   coverImg={movie.medium_cover_image}
                   title={movie.title}
                   summary={movie.summary}
                   generes={movie.genres}
+                  id={movie.id}
                 />) 
             }
           </div>
