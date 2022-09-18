@@ -20,7 +20,7 @@ function Detail() {
 
     useEffect(() => { 
         getMovie();
-      },[])
+    },[])
    
     return (
         <div>
