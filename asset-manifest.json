@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/movie_clone/static/js/main.f8967192.js",
+    "index.html": "/movie_clone/index.html",
+    "main.f8967192.js.map": "/movie_clone/static/js/main.f8967192.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.f8967192.js"
+  ]
+}
